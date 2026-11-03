@@ -1,7 +1,81 @@
-// Estilos propios del foro. Los colores primario y secundario se eligen en
-// Administración > Apariencia; aquí van solo los ajustes que el panel no cubre.
-// Variables disponibles: @primary-color, @secondary-color, @body-bg, @text-color…
+// Tema del foro: paleta sacada del logo (hojas verdes sobre agua).
+// Sobrescribe variables de flarum/core/less/common/variables.less. Al definirse
+// aquí, ganan a los colores del panel de Administración > Apariencia, que deja
+// de tener efecto sobre ellos: la paleta vive en el repo.
 
-.Hero {
-  border-radius: 0;
+// ---------------------------------------------------------------------------
+// Paleta
+@agua-profunda:   #0279b4; // #0290cf del logo, oscurecido para contraste AA con texto blanco
+@agua-media:      #20b7ed;
+@agua-clara:      #32d1ef;
+@hoja-oscura:     #047c3b;
+@hoja-media:      #45b85b;
+@hoja-lima:       #a4eb10;
+@noche:           #0b1a1f; // fondo del modo oscuro: azul petróleo casi negro
+
+// ---------------------------------------------------------------------------
+// Colores base de Flarum
+@primary-color:   @agua-profunda;
+@secondary-color: @hoja-oscura;
+
+// Modo claro: blanco con un matiz verde-agua muy suave en controles.
+@body-bg-light:          #fbfdfc;
+@control-bg-light:       #e7f3ef;
+@control-color-light:    #3d6358;
+@muted-color-light:      #5f7f76;
+@text-color-light:       #13231f;
+@heading-color-light:    #0d2a22;
+@code-bg-light:          #eef6f3;
+
+// Modo oscuro: azul petróleo.
+@body-bg-dark:           @noche;
+@control-bg-dark:        #13292f;
+@control-color-dark:     #9db8bf;
+@muted-color-dark:       #7f9aa3;
+@muted-more-color-dark:  #4d6870;
+@text-color-dark:        #d8e6e9;
+@heading-color-dark:     #eaf4f6;
+@code-bg-dark:           #08141a;
+
+// Cabecera "coloreada" (Administración > Apariencia > Colored header): verde hoja.
+@header-bg-colored-light: @hoja-oscura;
+@header-bg-colored-dark:  #063f22;
+@header-color-colored-dark:          #ffffff;
+@header-control-color-colored-dark:  #cdeedb;
+@header-control-bg-colored-dark:     #0a5230;
+
+// ---------------------------------------------------------------------------
+// En modo oscuro el azul primario se lee mal como texto: los enlaces usan el agua clara.
+[data-theme^=dark] {
+  --link-color: @agua-clara;
+  --sidenav-color-active: @agua-clara;
+}
+
+// Flarum pinta el fondo en un <style> crítico calculado con el color del panel;
+// con más especificidad que el suyo, el fondo sale de la paleta del tema.
+[data-theme] body {
+  background: var(--body-bg);
+}
+
+// Línea de agua bajo la cabecera, como las ondas del logo.
+.App-header {
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, @agua-profunda, @agua-media 45%, @hoja-media 80%, @hoja-lima) 1;
+}
+
+// Portada: degradado agua → hoja en el bloque de bienvenida.
+.WelcomeHero {
+  background: linear-gradient(120deg, @agua-profunda 0%, darken(@agua-media, 8%) 45%, @hoja-oscura 100%);
+  color: #fff;
+
+  .Hero-title,
+  .Hero-subtitle {
+    color: #fff;
+  }
+}
+
+// Botón principal con un toque de hoja al pasar el ratón.
+.Button--primary:hover,
+.Button--primary:focus-visible {
+  background: @hoja-oscura;
 }

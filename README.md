@@ -4,9 +4,9 @@ Flarum 2 con MariaDB, empaquetado como Docker Compose para Coolify. El vocabular
 
 ## Desplegar en Coolify
 
-1. Crea un recurso **Docker Compose** a partir de este repo (GitHub App), con `docker-compose.yaml` como archivo de compose.
+1. Crea un recurso **Docker Compose** a partir de este repo (con deploy key), con `docker-compose.yaml` como archivo de compose.
 2. En **Domains**, asigna tu dominio al servicio `flarum` (`https://foro.tudominio.com`).
-3. En **Environment Variables**, rellena `FLARUM_ADMIN_EMAIL` y, si quieres, `FLARUM_ADMIN_USER` y `FLARUM_TITLE`. Las demás variables (`SERVICE_*`) las genera Coolify.
+3. En **Environment Variables**, rellena `FLARUM_URL` (la URL pública, sin puerto: `https://foropiscinasnaturales.com`) y `FLARUM_ADMIN_EMAIL` y, si quieres, `FLARUM_ADMIN_USER` y `FLARUM_TITLE`. Las demás variables (`SERVICE_*`) las genera Coolify.
 4. Despliega. La primera vez instala el foro y activa todas las extensiones. En los siguientes despliegues solo migra y limpia la caché.
 5. La contraseña del admin está en Coolify, en la variable `SERVICE_PASSWORD_FLARUMADMIN`. Cámbiala desde el foro después de entrar por primera vez.
 

@@ -4,8 +4,8 @@ services:
     build: .
     image: foro-flarum:latest
     environment:
-      - SERVICE_URL_FLARUM_8080
-      - FLARUM_URL=${SERVICE_URL_FLARUM_8080}
+      - SERVICE_URL_FLARUM_8080 # solo para que Coolify enrute el dominio al puerto 8080; incluye el puerto, por eso no se usa como URL
+      - FLARUM_URL=${FLARUM_URL:?}
       - FLARUM_AUTORUN=true
       - FLARUM_TITLE=${FLARUM_TITLE:-Foro}
       - FLARUM_ADMIN_USER=${FLARUM_ADMIN_USER:-admin}
@@ -36,7 +36,7 @@ services:
     healthcheck:
       disable: true # la de la imagen comprueba nginx, que aquí no corre
     environment:
-      - FLARUM_URL=${SERVICE_URL_FLARUM_8080}
+      - FLARUM_URL=${FLARUM_URL:?}
       - DB_HOST=mariadb
       - DB_DATABASE=flarum
       - DB_USERNAME=${SERVICE_USER_MARIADB}

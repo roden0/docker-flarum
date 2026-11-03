@@ -1,0 +1,14 @@
+{
+    "name": "foro/tema",
+    "description": "Estilos propios del foro.",
+    "type": "flarum-extension",
+    "license": "proprietary",
+    "require": {
+        "flarum/core": "^2.0"
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Tema del foro"
+        }
+    }
+}

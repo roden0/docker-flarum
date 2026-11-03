@@ -1,0 +1,5 @@
+# Solo para pruebas en local: `docker compose up` lo aplica solo. Coolify no lo usa.
+services:
+  flarum:
+    ports:
+      - "8080:8080"

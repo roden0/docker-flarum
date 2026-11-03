@@ -1,0 +1,13 @@
+.git
+.github
+.env*
+vendor
+config.php
+docs
+*.md
+docker-compose*.yaml
+storage/*/*
+!storage/*/.gitignore
+public/assets/*
+!public/assets/.gitignore
+!public/assets/avatars

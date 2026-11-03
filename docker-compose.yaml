@@ -1,0 +1,70 @@
+# Despliegue en Coolify. Las variables SERVICE_* las genera Coolify y se guardan en su panel.
+services:
+  flarum:
+    build: .
+    image: foro-flarum:latest
+    environment:
+      - SERVICE_URL_FLARUM_8080
+      - FLARUM_URL=${SERVICE_URL_FLARUM}
+      - FLARUM_AUTORUN=true
+      - FLARUM_TITLE=${FLARUM_TITLE:-Foro}
+      - FLARUM_ADMIN_USER=${FLARUM_ADMIN_USER:-admin}
+      - FLARUM_ADMIN_EMAIL=${FLARUM_ADMIN_EMAIL:?}
+      - FLARUM_ADMIN_PASSWORD=${SERVICE_PASSWORD_FLARUMADMIN}
+      - DB_HOST=mariadb
+      - DB_DATABASE=flarum
+      - DB_USERNAME=${SERVICE_USER_MARIADB}
+      - DB_PASSWORD=${SERVICE_PASSWORD_MARIADB}
+    volumes:
+      - flarum-assets:/var/www/html/public/assets
+      - flarum-storage:/var/www/html/storage
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    healthcheck:
+      # /api responde solo si PHP, Flarum y la base de datos funcionan.
+      test: ["CMD", "curl", "-fsS", "-o", "/dev/null", "http://localhost:8080/api"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 120s
+
+  scheduler:
+    build: .
+    image: foro-flarum:latest
+    entrypoint: ["/var/www/html/docker/scheduler.sh"]
+    healthcheck:
+      disable: true # la de la imagen comprueba nginx, que aquí no corre
+    environment:
+      - FLARUM_URL=${SERVICE_URL_FLARUM}
+      - DB_HOST=mariadb
+      - DB_DATABASE=flarum
+      - DB_USERNAME=${SERVICE_USER_MARIADB}
+      - DB_PASSWORD=${SERVICE_PASSWORD_MARIADB}
+    volumes:
+      - flarum-assets:/var/www/html/public/assets
+      - flarum-storage:/var/www/html/storage
+    depends_on:
+      flarum:
+        condition: service_healthy
+
+  mariadb:
+    image: mariadb:11.8
+    environment:
+      - MARIADB_DATABASE=flarum
+      - MARIADB_USER=${SERVICE_USER_MARIADB}
+      - MARIADB_PASSWORD=${SERVICE_PASSWORD_MARIADB}
+      - MARIADB_ROOT_PASSWORD=${SERVICE_PASSWORD_MARIADBROOT}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  flarum-assets:
+  flarum-storage:
+  mariadb-data:

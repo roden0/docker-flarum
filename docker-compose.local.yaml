@@ -1,0 +1,6 @@
+# Solo para pruebas en local. Se carga vía COMPOSE_FILE en .env; Compose no lo cargaría solo,
+# así que en Coolify nunca se publica el puerto.
+services:
+  flarum:
+    ports:
+      - "8080:8080"

@@ -2795,7 +2795,7 @@
                     "type": "website"
                 }
             ],
-            "time": "2026-11-06T19:39:08+00:00"
+            "time": "2026-10-17T21:11:37+00:00"
         },
         {
             "name": "flarum/messages",
@@ -3828,16 +3828,16 @@
         },
         {
             "name": "fof/sitemap",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfFlarum/sitemap.git",
-                "reference": "1971b04a4c1509e2bbd2f69624f63eeeb807a428"
+                "reference": "b92755aaf862b876c604af6565eb938c6b2c00e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfFlarum/sitemap/zipball/1971b04a4c1509e2bbd2f69624f63eeeb807a428",
-                "reference": "1971b04a4c1509e2bbd2f69624f63eeeb807a428",
+                "url": "https://api.github.com/repos/FriendsOfFlarum/sitemap/zipball/b92755aaf862b876c604af6565eb938c6b2c00e2",
+                "reference": "b92755aaf862b876c604af6565eb938c6b2c00e2",
                 "shasum": ""
             },
             "require": {
@@ -3878,8 +3878,7 @@
                     "category": "feature",
                     "optional-dependencies": [
                         "flarum/tags",
-                        "fof/pages",
-                        "v17development/flarum-seo"
+                        "fof/pages"
                     ]
                 }
             },
@@ -3927,7 +3926,7 @@
                     "type": "website"
                 }
             ],
-            "time": "2026-10-23T16:56:26+00:00"
+            "time": "2026-11-06T09:04:05+00:00"
         },
         {
             "name": "fof/split",

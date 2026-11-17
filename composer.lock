@@ -2713,16 +2713,16 @@
         },
         {
             "name": "flarum/mentions",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flarum/mentions.git",
-                "reference": "6f1ce8720c028bd7c0a7d229c0a48696754ae5ce"
+                "reference": "9382c9b27b5874e97e1ff1d932ed9378b7924059"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flarum/mentions/zipball/6f1ce8720c028bd7c0a7d229c0a48696754ae5ce",
-                "reference": "6f1ce8720c028bd7c0a7d229c0a48696754ae5ce",
+                "url": "https://api.github.com/repos/flarum/mentions/zipball/9382c9b27b5874e97e1ff1d932ed9378b7924059",
+                "reference": "9382c9b27b5874e97e1ff1d932ed9378b7924059",
                 "shasum": ""
             },
             "require": {

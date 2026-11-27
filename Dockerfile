@@ -1,5 +1,5 @@
-# Versión fijada para que Dependabot proponga cada parche. 8.4.27 incluye los parches de php2shell (CVE-2026-109618 y CVE-2026-109619).
-FROM serversideup/php:8.6.0-fpm-nginx
+# Versión fijada para que Dependabot proponga cada parche. Máximo 8.5: laminas/laminas-stratigility (de flarum/core) aún no admite PHP 8.6.
+FROM serversideup/php:8.5.0-fpm-nginx
 
 USER root
 RUN install-php-extensions gd intl exif

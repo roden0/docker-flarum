@@ -4,6 +4,10 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      # flarum/core depende de laminas/laminas-stratigility, que aún no admite PHP 8.6. Quitar cuando lo haga.
+      - dependency-name: serversideup/php
+        versions: [">= 8.6"]
   - package-ecosystem: composer
     directory: /
     schedule:

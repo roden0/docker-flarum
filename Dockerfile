@@ -1,5 +1,5 @@
 # Versión fijada para que Dependabot proponga cada parche. Máximo 8.5: laminas/laminas-stratigility (de flarum/core) aún no admite PHP 8.6.
-FROM serversideup/php:8.5.0-fpm-nginx
+FROM serversideup/php:8.5.12-fpm-nginx
 
 USER root
 RUN install-php-extensions gd intl exif
